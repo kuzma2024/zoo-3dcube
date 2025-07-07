@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoo 3D Cube - Play Online 3D Puzzle Game | Free Browser Game</title>
+    <meta name="description" content="Play Zoo 3D Cube online - an exciting 3D puzzle game featuring adorable zoo animals. Challenge your spatial thinking skills in this immersive browser-based game.">
+    <meta name="keywords" content="zoo-3dcube, 3d puzzle game, online game, browser game, zoo animals, 3d cube game, free games">
+    <meta name="author" content="ArcadeGame.online">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arcadegame.online/">
+    <meta property="og:title" content="Zoo 3D Cube - Play Online 3D Puzzle Game">
+    <meta property="og:description" content="Play Zoo 3D Cube online - an exciting 3D puzzle game featuring adorable zoo animals.">
+    <meta property="og:image" content="https://arcadegame.online/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://arcadegame.online/">
+    <meta property="twitter:title" content="Zoo 3D Cube - Play Online 3D Puzzle Game">
+    <meta property="twitter:description" content="Play Zoo 3D Cube online - an exciting 3D puzzle game featuring adorable zoo animals.">
+    <meta property="twitter:image" content="https://arcadegame.online/twitter-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://arcadegame.online/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Game",
+        "name": "Zoo 3D Cube",
+        "description": "An exciting 3D puzzle game featuring adorable zoo animals that challenges your spatial thinking skills.",
+        "url": "https://arcadegame.online/",
+        "genre": "Puzzle",
+        "gamePlatform": "Web Browser",
+        "operatingSystem": "Cross-platform",
+        "applicationCategory": "Game",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary-blue: #007AFF;
+            --primary-gray: #8E8E93;
+            --light-gray: #F2F2F7;
+            --dark-gray: #1C1C1E;
+            --white: #FFFFFF;
+            --black: #000000;
+            --green: #34C759;
+            --orange: #FF9500;
+            --red: #FF3B30;
+            --purple: #AF52DE;
+            --system-gray: #F2F2F7;
+            --system-gray-2: #E5E5EA;
+            --system-gray-3: #D1D1D6;
+            --system-gray-4: #C7C7CC;
+            --text-primary: #1D1D1F;
+            --text-secondary: #86868B;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.15);
+            --border-radius: 12px;
+            --border-radius-lg: 20px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--system-gray-2) 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--system-gray-3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-light);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo::before {
+            content: "🎮";
+            font-size: 28px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+        
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+        
+        /* Main Content */
+        main {
+            padding: 60px 0;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero .subtitle {
+            font-size: clamp(18px, 2.5vw, 24px);
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 16px 32px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .cta-button:hover {
+            background: #0056CC;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 122, 255, 0.3);
+        }
+        
+        /* Game Section */
+        .game-section {
+            margin: 80px 0;
+        }
+        
+        .game-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid var(--system-gray-3);
+        }
+        
+        .game-iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            background: var(--white);
+        }
+        
+        /* Content Sections */
+        .content-section {
+            margin: 80px 0;
+        }
+        
+        .content-section h2 {
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            position: relative;
+        }
+        
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-blue);
+            border-radius: 2px;
+        }
+        
+        .content-section p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--system-gray-3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+        
+        .feature-card p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 60px 0 30px;
+            margin-top: 120px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: var(--primary-gray);
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .footer-section a:hover {
+            color: var(--white);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--system-gray-4);
+            color: var(--primary-gray);
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+            
+            .nav-links a {
+                font-size: 14px;
+            }
+            
+            main {
+                padding: 40px 0;
+            }
+            
+            .game-container {
+                padding: 20px;
+            }
+            
+            .game-iframe {
+                height: 400px;
+            }
+            
+            .content-section {
+                margin: 60px 0;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero .subtitle {
+                font-size: 16px;
+            }
+            
+            .cta-button {
+                padding: 14px 28px;
+                font-size: 16px;
+            }
+            
+            .game-iframe {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">ArcadeGame</a>
+            <ul class="nav-links">
+                <li><a href="#game">Play Game</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="container">
+        <section class="hero">
+            <h1>Zoo 3D Cube</h1>
+            <p class="subtitle">Experience the ultimate 3D puzzle adventure with adorable zoo animals in this captivating browser-based game</p>
+            <a href="#game" class="cta-button">Play Now - It's Free!</a>
+        </section>
+        
+        <section id="game" class="game-section">
+            <div class="game-container">
+                <iframe 
+                    src="https://github.com/zoo-js/zoo" 
+                    class="game-iframe"
+                    title="Zoo 3D Cube Game"
+                    loading="lazy"
+                    allow="fullscreen; gamepad; gyroscope; accelerometer">
+                </iframe>
+            </div>
+        </section>
+        
+        <section id="about" class="content-section">
+            <h2>About Zoo 3D Cube</h2>
+            <p>Zoo 3D Cube is an innovative 3D puzzle game that combines the charm of zoo animals with challenging spatial reasoning gameplay. This immersive browser-based experience takes you on a journey through beautifully crafted 3D environments where you'll encounter various zoo animals while solving intricate cube puzzles.</p>
+            
+            <p>The game features stunning 3D graphics, intuitive controls, and progressively challenging levels that will test your problem-solving skills. Whether you're a casual gamer looking for a fun distraction or a puzzle enthusiast seeking a mental challenge, Zoo 3D Cube offers an engaging experience that's both entertaining and intellectually stimulating.</p>
+            
+            <p>Built with modern web technologies, this game runs smoothly across all devices and platforms, ensuring you can enjoy the Zoo 3D Cube experience wherever you are. No downloads or installations required – simply open your browser and start playing!</p>
+        </section>
+        
+        <section id="features" class="content-section">
+            <h2>Game Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🦁</span>
+                    <h3>Adorable Zoo Animals</h3>
+                    <p>Meet a variety of charming zoo animals as you progress through different levels, each with their own unique animations and personalities.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🎲</span>
+                    <h3>3D Puzzle Mechanics</h3>
+                    <p>Master the art of 3D spatial reasoning with increasingly complex cube puzzles that challenge your mind and improve cognitive skills.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">📱</span>
+                    <h3>Cross-Platform Compatibility</h3>
+                    <p>Play seamlessly on desktop, tablet, or mobile devices with responsive design and touch-friendly controls.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🎮</span>
+                    <h3>Intuitive Controls</h3>
+                    <p>Easy-to-learn controls make the game accessible for players of all ages while maintaining depth for experienced gamers.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🏆</span>
+                    <h3>Progressive Difficulty</h3>
+                    <p>Start with simple puzzles and gradually work your way up to more complex challenges that will test your limits.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🎨</span>
+                    <h3>Beautiful Graphics</h3>
+                    <p>Enjoy stunning 3D visuals and smooth animations that bring the zoo environment to life in your browser.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>How to Play</h2>
+            <p>Getting started with Zoo 3D Cube is simple and straightforward. Use your mouse or touch controls to rotate and manipulate the 3D cubes, solving puzzles by arranging them in the correct configuration. Each level introduces new mechanics and challenges, keeping the gameplay fresh and engaging.</p>
+            
+            <p>The game automatically saves your progress, so you can pick up where you left off at any time. Challenge yourself to complete levels with the minimum number of moves, or simply enjoy the relaxing puzzle-solving experience at your own pace.</p>
+            
+            <p>As you advance through the levels, you'll unlock new zoo areas and meet different animals, each adding their own charm to the gaming experience. The combination of strategic thinking and delightful visuals makes Zoo 3D Cube a perfect game for both entertainment and mental exercise.</p>
+        </section>
+        
+        <section class="content-section">
+            <h2>Why Choose Zoo 3D Cube?</h2>
+            <p>Zoo 3D Cube stands out in the crowded online gaming space by offering a unique blend of educational value and entertainment. The game not only provides hours of fun but also helps improve spatial reasoning, problem-solving skills, and cognitive function.</p>
+            
+            <p>Unlike many online games that require downloads or registrations, Zoo 3D Cube is completely free to play and runs directly in your web browser. This accessibility, combined with its engaging gameplay and beautiful graphics, makes it an ideal choice for players looking for a premium gaming experience without the hassle.</p>
+            
+            <p>The game's family-friendly content and educational benefits make it suitable for players of all ages, while the progressively challenging levels ensure that even experienced puzzle enthusiasts will find plenty to enjoy. Join thousands of players worldwide who have already discovered the joy of Zoo 3D Cube!</p>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About ArcadeGame.online</h3>
+                    <p>We're dedicated to bringing you the best free online games with high-quality graphics and engaging gameplay. Our collection features carefully curated games that provide entertainment and educational value.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#game">Play Game</a></p>
+                    <p><a href="#about">About</a></p>
+                    <p><a href="#features">Features</a></p>
+                    <p><a href="/privacy">Privacy Policy</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <p><a href="/contact">Contact Us</a></p>
+                    <p><a href="/faq">FAQ</a></p>
+                    <p><a href="/feedback">Feedback</a></p>
+                    <p><a href="/support">Technical Support</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 ArcadeGame.online. All rights reserved. Zoo 3D Cube is a trademark of ArcadeGame.online.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
